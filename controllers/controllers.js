@@ -18,8 +18,8 @@ class Controller {
                 contactPersonPhone: row.contact_person_phone,
                 dietaryRestrictions: row.dietary_restrictions,
                 familyName: row.family_name,
-                notes,
-                other,
+                notes: row.notes,
+                other: row.other,
                 phoneNumber: row.phone_number,
             }))
             res.json(rows);
