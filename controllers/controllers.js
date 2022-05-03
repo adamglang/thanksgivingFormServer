@@ -8,11 +8,11 @@ const client = new Client({
     password: '',
     port: 5432,
 });
-await client.connect()
 
 class Controller {
     async listDinners(req, res) {
         try {
+            await client.connect();
             const dinners = await client.query('SELECT * FROM dinner_requests;');
             res.json(dinners);
         } catch(e) {
