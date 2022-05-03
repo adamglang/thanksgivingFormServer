@@ -14,7 +14,7 @@ class Controller {
         try {
             await client.connect();
             const dinners = await client.query('SELECT * FROM dinner_requests;');
-            res.json(dinners);
+            res.json(dinners.rows);
         } catch(e) {
             console.error(e.stack);
         }
