@@ -21,6 +21,8 @@ class Controller {
                 notes: row.notes,
                 other: row.other,
                 phoneNumber: row.phone_number,
+                pickupPerson: row.pickup_person,
+                numberOfFamilyMembers: row.number_of_family_members,
             }))
             res.json(rows);
             await client.end()
