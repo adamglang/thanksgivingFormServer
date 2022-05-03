@@ -19,7 +19,7 @@ class Controller {
                 dietaryRestrictions: row.dietary_restrictions,
                 familyName: row.family_name,
                 notes: row.notes,
-                other: row.other,
+                otherDietaryRestrictions: row.other,
                 phoneNumber: row.phone_number,
                 pickupPerson: row.pickup_person,
                 numberOfFamilyMembers: row.number_of_family_members,
