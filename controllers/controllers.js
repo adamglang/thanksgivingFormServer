@@ -13,7 +13,16 @@ class Controller {
             });
             await client.connect();
             const dinners = await client.query('SELECT * FROM dinner_requests;');
-            res.json(dinners.rows);
+            const rows = dinners.rows.map((row) => ({
+                contactPerson: row.contact_person,
+                contactPersonPhone: row.contact_person_phone,
+                dietaryRestrictions: row.dietary_restrictions,
+                familyName: row.family_name,
+                notes,
+                other,
+                phoneNumber: row.phone_number,
+            }))
+            res.json(rows);
             await client.end()
         } catch(e) {
             console.error(e.stack);
