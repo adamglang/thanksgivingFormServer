@@ -8,7 +8,7 @@ const app = express();
 
 // Configuration
 const PORT = 3000;
-const HOST = "http://hlcathanksgivingboxes.com/";
+const HOST = "164.92.75.75";
 
 // Logging
 app.use(morgan('dev'))
