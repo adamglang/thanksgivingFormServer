@@ -33,7 +33,7 @@ class Controller {
 
     async createDinner(req, res) {
         try {
-            console.log(req.body.payload)
+            console.log(req.body)
 
         } catch(e) {
 
