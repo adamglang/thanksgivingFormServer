@@ -33,7 +33,16 @@ class Controller {
 
     async createDinner(req, res) {
         try {
+            const client = new Client({
+                user: 'postgres',
+                host: 'localhost',
+                database: 'postgres',
+                password: 'secret123',
+                port: 5432,
+            });
+            await client.connect();
             console.log(req.body)
+            res.json(`temp result ${JSON.stringify(req.body)} was sent`);
 
         } catch(e) {
 
