@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const { Client } = require('pg');
+const moment = require('moment-timezone');
 
 class Controller {
     async listDinners(req, res) {
@@ -41,8 +42,6 @@ class Controller {
                 port: 5432,
             });
             await client.connect();
-            const payload = req.body;
-            console.log(payload)
             const {
                 contactPerson,
                 contactPersonPhone,
@@ -53,12 +52,17 @@ class Controller {
                 phoneNumber,
                 pickupPerson,
                 numberOfFamilyMembers,
-            } = payload;
+            } = req.body;
 
-            await client.query(`INSERT INTO dinner_requests
-                (contact_person, contact_person_phone, dietary_restrictions, family_name, notes, other, phone_number, pickup_person, number_of_family_members)
-                VALUES ('${contactPerson}', '${contactPersonPhone}', '${dietaryRestrictions}', '${familyName}', '${notes}', '${other}', '${phoneNumber}', '${pickupPerson}', '${numberOfFamilyMembers}')
-            ;`);
+            const dateCreated = moment(new Date()).tz('America/Los_Angeles').format('MMMM Do YYYY');
+
+            await
+                client.query(
+                    `INSERT INTO dinner_requests
+                    (contact_person, contact_person_phone, dietary_restrictions, family_name, notes, other, phone_number, pickup_person, number_of_family_members, date_created)
+                    VALUES ('${contactPerson}', '${contactPersonPhone}', '${dietaryRestrictions}', '${familyName}', '${notes}', '${other}', '${phoneNumber}', '${pickupPerson}', '${numberOfFamilyMembers}', '${dateCreated}')
+                ;`
+            );
 
             res.json(`${JSON.stringify(req.body)}`);
         } catch(e) {
