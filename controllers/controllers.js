@@ -24,6 +24,7 @@ class Controller {
                 phoneNumber: row.phone_number,
                 pickupPerson: row.pickup_person,
                 numberOfFamilyMembers: row.number_of_family_members,
+                dateCreated: row.date_created,
             }))
             res.json(rows);
             await client.end()
