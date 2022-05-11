@@ -49,7 +49,7 @@ class Controller {
                 dietaryRestrictions,
                 familyName,
                 notes,
-                otherDietaryRestrictions,
+                other,
                 phoneNumber,
                 pickupPerson,
                 numberOfFamilyMembers,
@@ -57,7 +57,7 @@ class Controller {
 
             await client.query(`INSERT INTO dinner_requests
                 (contact_person, contact_person_phone, dietary_restrictions, family_name, notes, other, phone_number, pickup_person, number_of_family_members)
-                VALUES ('${contactPerson}', '${contactPersonPhone}', '${dietaryRestrictions}', '${familyName}', '${notes}', '${otherDietaryRestrictions}', '${phoneNumber}', '${pickupPerson}', '${numberOfFamilyMembers}')
+                VALUES ('${contactPerson}', '${contactPersonPhone}', '${dietaryRestrictions}', '${familyName}', '${notes}', '${other}', '${phoneNumber}', '${pickupPerson}', '${numberOfFamilyMembers}')
             ;`);
 
             res.json(`${JSON.stringify(req.body)}`);
