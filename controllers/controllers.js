@@ -56,8 +56,8 @@ class Controller {
             } = payload;
 
             await client.query(`INSERT INTO dinner_requests
-                (contact_person)
-                VALUES (${contactPerson})
+                (contact_person, contact_person_phone, dietary_restrictions, family_name, notes, other, phone_number, pickup_person, number_of_family_members)
+                VALUES ('${contactPerson}', '${contactPersonPhone}', '${dietaryRestrictions}', '${familyName}', '${notes}', '${otherDietaryRestrictions}', '${phoneNumber}', '${pickupPerson}', '${numberOfFamilyMembers}')
             ;`);
 
             res.json(`${JSON.stringify(req.body)}`);
